@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -50,7 +51,7 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (RelativeLayout) object;
+        return view == (LinearLayout) object;
     }
 
     @Override
@@ -58,7 +59,8 @@ public class SliderAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_layout, container, false);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.slikaProizvoda);
+        RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.RL);
+        ImageView imageView = (ImageView) relativeLayout.findViewById(R.id.slikaProizvoda);
         TextView nazivView = (TextView) view.findViewById(R.id.imeProizvoda);
         TextView cenaView  = (TextView) view.findViewById(R.id.cenaProizvoda);
 
@@ -73,6 +75,6 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem( ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout)object);
+        container.removeView((LinearLayout)object);
     }
 }
